@@ -11,7 +11,7 @@ import SwiftUI
 struct ChessStreamersSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView(model: MainViewModel())
         }
     }
 }
