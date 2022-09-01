@@ -13,7 +13,7 @@ struct DetailView: View {
 
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: streamer.avatarUrl),
+            AsyncImage(url: URL(string: streamer.avatarUrl ?? ""),
                        content: { image in
                 image.resizable()
                     .aspectRatio(contentMode: .fit)
@@ -23,7 +23,7 @@ struct DetailView: View {
             })
             .padding()
 
-            Text(streamer.username)
+            Text(streamer.username ?? "")
                 .font(.system(size: 28))
                 .padding()
 
@@ -34,7 +34,7 @@ struct DetailView: View {
 
             VStack {
                 Text("Visit")
-                Link("\(streamer.url)", destination: URL(string: streamer.url)!)
+                Link("\(streamer.url ?? "")", destination: URL(string: streamer.url ?? "")!)
             }.padding()
 
             Spacer()

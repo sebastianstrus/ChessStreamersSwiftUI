@@ -18,6 +18,8 @@
 		7DF7599A28B4DDF100D2350B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF7599928B4DDF100D2350B /* MainViewModel.swift */; };
 		7DF7599C28B4E4EE00D2350B /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF7599B28B4E4EE00D2350B /* Device.swift */; };
 		7DF7599E28B4E9D000D2350B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF7599D28B4E9D000D2350B /* DetailView.swift */; };
+		7DF759A328C13F9900D2350B /* ChessStreamersSwiftUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7DF759A128C13F9900D2350B /* ChessStreamersSwiftUI.xcdatamodeld */; };
+		7DF759A528C1416900D2350B /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF759A428C1416900D2350B /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		7DF7599928B4DDF100D2350B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		7DF7599B28B4E4EE00D2350B /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		7DF7599D28B4E9D000D2350B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		7DF759A228C13F9900D2350B /* Streamer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Streamer.xcdatamodel; sourceTree = "<group>"; };
+		7DF759A428C1416900D2350B /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 				7DF7598C28B4DC3700D2350B /* Errors */,
 				7DF7599628B4DD3300D2350B /* Utilities */,
 				7DF7598428B4DBD900D2350B /* Preview Content */,
+				7DF759A128C13F9900D2350B /* ChessStreamersSwiftUI.xcdatamodeld */,
 			);
 			path = ChessStreamersSwiftUI;
 			sourceTree = "<group>";
@@ -99,6 +104,7 @@
 			children = (
 				7DF7599128B4DCBD00D2350B /* Model */,
 				7DF7599028B4DCB700D2350B /* Services */,
+				7DF759A428C1416900D2350B /* DataController.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -200,8 +206,10 @@
 			files = (
 				7DF7599A28B4DDF100D2350B /* MainViewModel.swift in Sources */,
 				7DF7599E28B4E9D000D2350B /* DetailView.swift in Sources */,
+				7DF759A328C13F9900D2350B /* ChessStreamersSwiftUI.xcdatamodeld in Sources */,
 				7DF7599828B4DD4800D2350B /* Properties.swift in Sources */,
 				7DF7598128B4DBD600D2350B /* MainView.swift in Sources */,
+				7DF759A528C1416900D2350B /* DataController.swift in Sources */,
 				7DF7599328B4DCE300D2350B /* StreamersAPIService.swift in Sources */,
 				7DF7597F28B4DBD600D2350B /* ChessStreamersSwiftUIApp.swift in Sources */,
 				7DF7598E28B4DC5300D2350B /* GeneralError.swift in Sources */,
@@ -407,6 +415,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7DF759A128C13F9900D2350B /* ChessStreamersSwiftUI.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7DF759A228C13F9900D2350B /* Streamer.xcdatamodel */,
+			);
+			currentVersion = 7DF759A228C13F9900D2350B /* Streamer.xcdatamodel */;
+			path = ChessStreamersSwiftUI.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7DF7597328B4DBD600D2350B /* Project object */;
 }

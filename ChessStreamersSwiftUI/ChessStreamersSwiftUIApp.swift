@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct ChessStreamersSwiftUIApp: App {
+    @StateObject var dataController = DataController()
+    
     var body: some Scene {
         WindowGroup {
-            MainView(model: MainViewModel())
+            MainView(/*model: MainViewModel()*/)
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }
