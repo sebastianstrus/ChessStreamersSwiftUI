@@ -7,8 +7,9 @@
 
 import Foundation
 import Combine
-
+import CoreData
 class StreamersAPIService {
+    
     fileprivate static var _shared: StreamersAPIService!
     public static var shared: StreamersAPIService {
         get {
@@ -20,9 +21,9 @@ class StreamersAPIService {
         }
     }
 
-    public static func getStreamers() -> AnyPublisher<[String:[Streamer]], Error>{
+    public static func getStreamers(_ moc: NSManagedObjectContext) -> AnyPublisher<[String:[Streamer]], Error>{
         let url = "\(Properties.environment.rawValue)/pub/streamers"
-        return makeRequest(method: .get, url: url)
+        return makeRequest(method: .get, url: url, moc)
     }
 
     // MARK: - Http requests
@@ -41,6 +42,7 @@ class StreamersAPIService {
     private static func makeRequest<Response: Decodable>(method: HttpMethod,
                                                          url: String, body: Data? = nil,
                                                          headers: [String : String]? = nil,
+                                                         _ moc: NSManagedObjectContext,
                                                          responseHandler: ((URLSession.DataTaskPublisher.Output) -> HttpResponse<Response>)? = nil) -> AnyPublisher<Response, Error> {
         if let url = URL(string: url)  {
             var request = URLRequest(url: url)
@@ -54,7 +56,7 @@ class StreamersAPIService {
                     request.addValue(value, forHTTPHeaderField: key)
                 }
             }
-            return StreamersAPIService.request(request, responseHandler: responseHandler)
+            return StreamersAPIService.request(request, decoder: JSONDecoder(context: moc), responseHandler: responseHandler)
                 .map(\.value)
                 .eraseToAnyPublisher()
         } else {
@@ -62,7 +64,7 @@ class StreamersAPIService {
         }
     }
 
-    private static func request<T: Decodable>(_ request: URLRequest, _ decoder: JSONDecoder = JSONDecoder(), responseHandler: ((URLSession.DataTaskPublisher.Output) -> HttpResponse<T>)? = nil) -> AnyPublisher<HttpResponse<T>, Error> {
+    private static func request<T: Decodable>(_ request: URLRequest, decoder: JSONDecoder = JSONDecoder(), responseHandler: ((URLSession.DataTaskPublisher.Output) -> HttpResponse<T>)? = nil) -> AnyPublisher<HttpResponse<T>, Error> {
         return URLSession.shared
             .dataTaskPublisher(for: request)
             .tryMap { result -> HttpResponse<T> in

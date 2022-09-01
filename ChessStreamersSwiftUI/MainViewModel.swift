@@ -7,18 +7,19 @@
 
 import Foundation
 import Combine
+import CoreData
 
 class MainViewModel: ObservableObject {
-
+    
     @Published var streamers: [Streamer] = []
     private var streamersCancellable: AnyCancellable?
 
-    init() {
-        getStreamers()
+    init(moc: NSManagedObjectContext) {
+        getStreamers(moc)
     }
 
-    private func getStreamers() {
-        self.streamersCancellable = StreamersAPIService.getStreamers()
+    private func getStreamers(_ moc: NSManagedObjectContext) {
+        self.streamersCancellable = StreamersAPIService.getStreamers(moc)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion
