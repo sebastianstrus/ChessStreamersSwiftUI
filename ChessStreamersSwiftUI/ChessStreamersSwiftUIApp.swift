@@ -13,7 +13,7 @@ struct ChessStreamersSwiftUIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainView(/*model: MainViewModel()*/)
+            MainView(model: MainViewModel())
                 .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }

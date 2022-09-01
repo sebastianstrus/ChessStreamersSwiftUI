@@ -12,7 +12,7 @@ struct MainView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var streamers: FetchedResults<Streamer>
     
-    //@StateObject var model: MainViewModel
+    @StateObject var model: MainViewModel
 
     let columns: [GridItem] = Array(repeating: .init(.flexible()),
                                     count: Device.IS_IPAD ? 8 : 4)
